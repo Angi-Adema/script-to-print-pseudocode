@@ -23,14 +23,14 @@ relational_tables = {
     "DriverCarTable": ["driverID (PK, FK)", "vehicleID (PK, FK)"]
 }
 
-# Function to print pseudocode representation of the Vehicle model classes and their inheritance relationships
+# Function to print the pseudocode representation of the Vehicle database model
 def print_pseudocode():
     # Loop through each class and its attributes in the vehicle model
     for cls, attrs in vehicle_model.items():
 
         # Conditional to check if the class inherits from another class
         if cls in inherits:
-            print(f"DEFINE {cls}({INHERITS[cls]}):")   # Print class with inheritance if it exists
+            print(f"DEFINE {cls} INHERITS {inherits[cls]}:")   # Print class with inheritance if it exists
         else:
             print(f"DEFINE {cls}:")   # Print class without inheritance if it doesn't exist
 
@@ -43,19 +43,23 @@ def print_pseudocode():
         # Print a blank line after each class for readability
         print()
 
+    # Print the relational tables and their columns
+    print("Relational Tables:")
+
+    # Print a blank line before listing the relational tables for readability
+    print()
+
+    # Loop through each relational table and its columns to print the CREATE statements
+    for table, columns in relational_tables.items():
+        print(f"CREATE {table}:")   # Print the CREATE statement for the table
+
+        # Loop through each column in the table to print its definition
+        for column in columns:
+            print(f"    {column}")  # Print the column definition for the table
+
+        # Print a blank line after each table for readability
+        print()
+
 # Call the function to print the pseudocode representation of the Vehicle model
 print_pseudocode()
 
-# Print the relational tables and their columns
-print("Relational Tables:")
-
-# Loop through each relational table and its columns to print the CREATE statements
-for table, columns in relational_tables.items():
-    print(f"CREATE {table}:")   # Print the CREATE statement for the table
-
-    # Loop through each column in the table to print its definition
-    for column in columns:
-        print(f"    {column}")  # Print the column definition for the table
-
-    # Print a blank line after each table for readability
-    print()
