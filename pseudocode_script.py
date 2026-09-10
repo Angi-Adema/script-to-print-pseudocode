@@ -45,3 +45,17 @@ def print_pseudocode():
 
 # Call the function to print the pseudocode representation of the Vehicle model
 print_pseudocode()
+
+# Print the relational tables and their columns
+print("Relational Tables:")
+
+# Loop through each relational table and its columns to print the CREATE statements
+for table, columns in relational_tables.items():
+    print(f"CREATE {table}:")   # Print the CREATE statement for the table
+
+    # Loop through each column in the table to print its definition
+    for column in columns:
+        print(f"    {column}")  # Print the column definition for the table
+
+    # Print a blank line after each table for readability
+    print()
