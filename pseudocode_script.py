@@ -23,6 +23,13 @@ relational_tables = {
     "DriverCarTable": ["driverID (PK, FK)", "vehicleID (PK, FK)"]
 }
 
+# Create a dictionary to store relationship data
+relationships = {
+    "CarTable": "VehicleTable using vehicleID",
+    "TruckTable": "VehicleTable using vehicleID",
+    "DriverCarTable": "DriverTable and CarTable using driverID and vehicleID"
+}
+
 # Function to print the pseudocode representation of the Vehicle database model
 def print_pseudocode():
     # Loop through each class and its attributes in the vehicle model
@@ -30,9 +37,9 @@ def print_pseudocode():
 
         # Conditional to check if the class inherits from another class
         if cls in inherits:
-            print(f"DEFINE {cls} INHERITS {inherits[cls]}:")   # Print class with inheritance if it exists
+            print(f"DEFINE {cls} INHERITS {inherits[cls]}")   # Print class with inheritance if it exists
         else:
-            print(f"DEFINE {cls}:")   # Print class without inheritance if it doesn't exist
+            print(f"DEFINE {cls}")   # Print class without inheritance if it doesn't exist
 
         # Nested loop to iterate over the attributes of the class
         for attr in attrs:
@@ -44,14 +51,14 @@ def print_pseudocode():
         print()
 
     # Print the relational tables and their columns
-    print("Relational Tables:")
+    print("RELATIONAL TABLES:")
 
     # Print a blank line before listing the relational tables for readability
     print()
 
     # Loop through each relational table and its columns to print the CREATE statements
     for table, columns in relational_tables.items():
-        print(f"CREATE {table}:")   # Print the CREATE statement for the table
+        print(f"CREATE {table}")   # Print the CREATE statement for the table
 
         # Loop through each column in the table to print its definition
         for column in columns:
@@ -59,6 +66,16 @@ def print_pseudocode():
 
         # Print a blank line after each table for readability
         print()
+
+    # Print the relationships between the tables in the Vehicle model
+    print("RELATIONSHIPS:")
+
+    # Print a blank line before listing the relationships for readability
+    print()
+
+    # Loop through the relationships and print them
+    for table, relation in relationships.items():
+        print(f"{table} RELATES TO {relation}")
 
 # Call the function to print the pseudocode representation of the Vehicle model
 print_pseudocode()
