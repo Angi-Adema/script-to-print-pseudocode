@@ -1,6 +1,6 @@
 # Create a Python script that prints pseudocode based on the Vehicle database design model.
 
-# Define a dictionary that stores model info, including classes and attributes shown in the Vehicle model
+# Define a dictionary that stores model information, including classes and attributes shown in the Vehicle model
 vehicle_model = {
     "Vehicle": ["vehicleID", "make"],
     "Car": ["numberOfDoors", "isAllWheelDrive"],
